@@ -1,0 +1,17 @@
+
+probe scheduler.migrate
+{
+    /*
+    if (cpu_from == 1 || cpu_to ==1 ) {
+        printf("PID[%08d]: CPU %d - %d ", pid, cpu_from, cpu_to)
+        printf("pid: 0x%08x \n", $p->pid)
+        printf("closid: 0x%08x ", $p->closid)
+        printf("rmid: 0x%08x \n", $p->rmid)
+    }
+    */
+
+    if ($p->rmid != 0) {
+        printf("PID[%08d]: CPU %d - %d ", pid, cpu_from, cpu_to)
+        printf("rmid: 0x%08x \n", $p->rmid)
+    }
+}
